@@ -19,6 +19,7 @@
   --danger: #d43c39;
   --success: #2e7d32;
   --warning: #f59e0b;
+  --primary-accent: #0055CC;
 }
 
 html, body {
@@ -324,13 +325,115 @@ th { background: #f8fafc; color: var(--text-muted); font-size: 12px; text-transf
 input:checked + .slider { background-color: var(--success); }
 input:checked + .slider:before { transform: translateX(22px); }
 
-/* FOOTER */
-.esma-footer { background-color: #E2E2EC; padding: 40px 10%; margin-top: auto; font-size: 14px; }
-.footer-content { display: flex; justify-content: space-between; max-width: 1400px; margin: 0 auto; gap: 30px; }
-.eu-banner { background-color: #2A00A0; color: #FFFFFF; font-size: 12px; padding: 6px 12px; display: inline-flex; align-items: center; gap: 8px; }
-.eu-flag-icon { width: 22px; height: 15px; }
-.footer-links { display: grid; grid-template-columns: repeat(3, auto); gap: 20px; }
-.footer-links a { color: #0055CC; text-decoration: none; }
+/* FOOTER STYLES */
+.esma-footer {
+  background-color: #E2E2EC;
+  padding: 40px 10%;
+  margin-top: auto;
+  font-family: "Open Sans", Arial, sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.footer-logo {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.eu-banner {
+  background-color: #2A00A0;
+  color: #FFFFFF;
+  font-size: 12px;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eu-flag-icon {
+  width: 22px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, auto));
+  column-gap: 50px;
+  row-gap: 25px;
+  align-items: center;
+}
+
+.footer-links a, .footer-links a:visited, .footer-links a:hover, .footer-links a:active {
+  color: #0055CC !important;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.footer-links a:hover {
+  text-decoration: underline !important;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-heading {
+  color: #0055CC;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.social-icons a {
+  color: #E65100;
+  font-size: 24px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.social-icons a:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
 </style>
 </head>
 <body onload="initPortal()">
@@ -521,17 +624,67 @@ input:checked + .slider:before { transform: translateX(22px); }
 <!-- FOOTER -->
 <footer class="esma-footer">
   <div class="footer-content">
-    <div>
-      <a href="https://www.esma.europa.eu/" target="_blank"><img src="https://www.esma.europa.eu/themes/custom/esma_webst_theme/assets/images/ESMALogo.png" style="height:50px;"></a>
-      <div class="eu-banner" style="margin-top:10px;">ESMA is an authority of the European Union</div>
+    
+    <!-- 1. Left side: Logo & Tagline Banner -->
+    <div class="footer-brand">
+      <a href="https://www.esma.europa.eu/" target="_blank">
+        <img src="https://www.esma.europa.eu/themes/custom/esma_webst_theme/assets/images/ESMALogo.png" alt="ESMA Logo" class="footer-logo">
+      </a>
+      <div class="eu-banner">
+        <span>ESMA is an authority of the European Union</span>
+        
+        <!-- EU Flag SVG -->
+        <svg class="eu-flag-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 270 180" aria-label="EU Flag">
+          <rect width="270" height="180" fill="#003399"/>
+          <g id="star">
+            <g id="half">
+              <path id="point" d="M0-1V0h1" transform="rotate(18,0,-1)" fill="#ffcc00"/>
+              <use xlink:href="#point" transform="scale(-1,1)"/>
+            </g>
+            <use xlink:href="#half" transform="rotate(72)"/>
+            <use xlink:href="#half" transform="rotate(144)"/>
+            <use xlink:href="#half" transform="rotate(-144)"/>
+            <use xlink:href="#half" transform="rotate(-72)"/>
+          </g>
+          <g transform="translate(135,90) scale(9)">
+            <use xlink:href="#star" y="-6"/>
+            <use xlink:href="#star" transform="rotate(30)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(60)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(90)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(120)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(150)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(180)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(210)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(240)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(270)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(300)" y="-6"/>
+            <use xlink:href="#star" transform="rotate(330)" y="-6"/>
+          </g>
+        </svg>
+      </div>
     </div>
+
+    <!-- 2. Middle side: Links -->
     <div class="footer-links">
       <a href="https://www.esma.europa.eu/about-esma/careers" target="_blank">Careers</a>
       <a href="https://www.esma.europa.eu/contact-and-help" target="_blank" data-i18n="ftrContact">Contact & Help</a>
       <a href="https://www.esma.europa.eu/cookie-policy" target="_blank">Cookie Policy</a>
       <a href="https://www.esma.europa.eu/databases-library/esma-library" target="_blank">ESMA Documents</a>
+      <a href="https://www.esma.europa.eu/interact-with-esma/media-corner" target="_blank">Media Corner</a>
       <a href="https://www.esma.europa.eu/legal-notice" target="_blank">Legal Notice</a>
     </div>
+
+    <!-- 3. Right side: Social Media Header & Icons -->
+    <div class="footer-social">
+      <h4 class="social-heading">Social Media</h4>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/company/european-securities-and-markets-authority-esma/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://instagram.com/esmacomms/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="https://twitter.com/ESMAComms" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-square-x-twitter"></i></a>
+        <a href="https://www.youtube.com/channel/UCe5tFtIMPE5BbFGdqT330WQ" target="_blank" aria-label="YouTube"><i class="fa-brands fa-square-youtube"></i></a>
+      </div>
+    </div>
+
   </div>
 </footer>
 
@@ -656,7 +809,6 @@ function switchAdminSubTab(tab) {
 
 /* FIREBASE CLOUD DATABASE OPERATIONS */
 
-// Load Clients in Real-Time from Firestore
 function loadClientsTable() {
   db.collection("clients").onSnapshot((snapshot) => {
     const tbody = document.getElementById('clientTableBody');
@@ -691,7 +843,6 @@ function loadClientsTable() {
   });
 }
 
-// Add Client to Firestore
 async function handleAddClient(e) {
   e.preventDefault();
   const email = document.getElementById('admEmail').value.trim().toLowerCase();
@@ -714,7 +865,6 @@ async function handleAddClient(e) {
   }
 }
 
-// Toggle Client Done State in Firestore
 async function toggleClientDone(email, isDone) {
   try {
     await db.collection("clients").doc(email).update({ done: isDone });
@@ -723,7 +873,6 @@ async function toggleClientDone(email, isDone) {
   }
 }
 
-// Delete Client from Firestore
 async function deleteClient(email) {
   if (confirm(`Are you sure you want to delete ${email}?`)) {
     try {
@@ -771,7 +920,6 @@ async function nextPhase(fromPhase) {
       const emailInput = document.getElementById('email').value.trim().toLowerCase();
 
       try {
-        // Query Firebase Cloud directly by document ID (email)
         const docRef = await db.collection("clients").doc(emailInput).get();
 
         if (!docRef.exists) {
@@ -781,7 +929,6 @@ async function nextPhase(fromPhase) {
 
         const userRecord = docRef.data();
 
-        // Verify Name match (case-insensitive)
         if (userRecord.name.trim().toLowerCase() !== nameInput) {
           showError('msgNoRestrained');
           return;
